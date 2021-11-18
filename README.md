@@ -7,7 +7,7 @@ The O2_TRANS software package allows computing the oxygen transmittance at high 
 The code is fully based on the HITRAN database and formulation. The O2_TRANS software package is provided as a response for a practical solution to compensate for oxygen absorption effects when measuring solar-induced fluorescence on proximal sensing applications at high spectral resolution. The O2_TRANS package **does not include** the **influence of the relative humidity**, the **wind speed or turbulency effects** on its computation. Likewise, **the O2 mixing ratio is assumed as fixed**. The O2_TRANS package **does not account for the aerosol transmittance effect**, therefore being only applicable for fluorescence retrievals on instrument set-up configurations accounting for a few meters target-sensor distance. **The code is open source** and can be accessed through this GIT repository allowing other researchers to contribute, improve and adapt it for their specific needs.
 
 
-More information regarding the O2_TRANS software package can be found in the following Technical Note:
+More information regarding the O2_TRANS software package can be found in the following Technical publication: (coming soon :) )
 
 
 Please, if you have any suggestion to improve or to correct the O2_TRANS software package, contact us :+1:
