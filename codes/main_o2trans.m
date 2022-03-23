@@ -77,8 +77,8 @@ for i=1:num_samples
     % (4) Compute the CIA O2-Air transmittance
     % ---------------------    
     [t_cia_O2A,wl_cia_O2A,t_cia_O2B,wl_cia_O2B]= read_cia_file_hitran(flags.AUX,rho_air,O2rho,z_mes,T_mes); 
-    TRAN_O2A_CIA   = interp1(wl_cia_O2A,t_cia_O2A',wl_O2A);   TRAN_O2A_CIA(isnan(TRAN_O2A_CIA))=1; 
-    TRAN_O2B_CIA   = interp1(wl_cia_O2B,t_cia_O2B',wl_O2B);   TRAN_O2B_CIA(isnan(TRAN_O2B_CIA))=1; 
+    TRAN_O2A_CIA   = interp1(wl_cia_O2A,t_cia_O2A',wl_O2A);   TRAN_O2A_CIA(isnan(TRAN_O2A_CIA))=1;  TRAN_O2A_CIA =prod(TRAN_O2A_CIA,2)'; 
+    TRAN_O2B_CIA   = interp1(wl_cia_O2B,t_cia_O2B',wl_O2B);   TRAN_O2B_CIA(isnan(TRAN_O2B_CIA))=1;  TRAN_O2B_CIA =prod(TRAN_O2B_CIA,2)';
     
     % ---------------------
     % (5) Combine the total transmittance
