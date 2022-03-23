@@ -588,30 +588,22 @@ tau_ij_ray_O2A        = scatte_cross_sec_2A.*p.*cons.Na./(cons.ma.*cons.g); % Ra
 tau_ij_ray_O2B        = tau_ij_ray_O2B.*101325./10;
 tau_ij_ray_O2A        = tau_ij_ray_O2A.*101325./10;
 
-
 % [Added in geometry change | April 2022]
 % Here we change the expresseion to take into account both VZA and
 % SZA. The VZA is going to be hard coded for the moment to test if
 % the formulation is good.
 % Original 
-% tran_ray_O2B          = exp(-tau_ij_ray_O2B./cosd(zenith));
-% tran_ray_O2A          = exp(-tau_ij_ray_O2A./cosd(zenith));
-% Added modified formulation for especific purpose in the PH method
-vza = 9;
-sza = zenith;
-tran_ray_O2B          = exp(-tau_ij_ray_O2B.*((cosd(sza)+cosd(vza))./(cosd(zenith).*cosd(vza))));
-tran_ray_O2A          = exp(-tau_ij_ray_O2A.*((cosd(sza)+cosd(vza))./(cosd(zenith).*cosd(vza))));
-
+tran_ray_O2B          = exp(-tau_ij_ray_O2B./cosd(zenith));
+tran_ray_O2A          = exp(-tau_ij_ray_O2A./cosd(zenith));
+% Added modified formulation for especific p 
 
 cont = 0;
 for i=O2B_end:O2B_ini
     cont = cont+1;
     for tt= 1:length(T)
         tau_ij_O2B            = O2_den(tt).*K_ij_O2B(:,:,tt); % Absorption contribution   
-        % original 
-        % tran_O2B(cont,:,tt)   = exp(-tau_ij_O2B(cont,:)./cosd(zenith));
-        % Modified PH method
-        tran_O2B(cont,:,tt)   = exp(-tau_ij_O2B(cont,:).*((cosd(sza)+cosd(vza))./(cosd(zenith).*cosd(vza))));
+
+        tran_O2B(cont,:,tt)   = exp(-tau_ij_O2B(cont,:)./cosd(zenith));
        
     end
 end
@@ -622,11 +614,7 @@ for i=O2A_end:O2A_ini
     cont = cont+1;
     for tt= 1:length(T)
         tau_ij_O2A            = O2_den(tt).*K_ij_O2A(:,:,tt); % Absorption contribution
-        % original 
-        % tran_O2A(cont,:,tt)   = exp(-tau_ij_O2A(cont,:)./cosd(zenith));
-        % Modified PH method
-        tran_O2A(cont,:,tt)   = exp(-tau_ij_O2A(cont,:).*((cosd(sza)+cosd(vza))./(cosd(zenith).*cosd(vza))));
-
+        tran_O2A(cont,:,tt)   = exp(-tau_ij_O2A(cont,:)./cosd(zenith));
       
     end
 end
